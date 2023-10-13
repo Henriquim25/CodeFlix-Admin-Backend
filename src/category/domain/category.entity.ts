@@ -1,5 +1,5 @@
 export type CategoryConstructorProps = {
-  category_id?: string;
+  id?: string;
   name: string;
   description?: string | null;
   is_active?: boolean;
@@ -13,18 +13,18 @@ export type CategoryCreateCommand = {
 };
 
 export class Category {
-  category_id: string;
+  id: string;
   name: string;
   description: string | null;
-  is_active: boolean;
-  created_at: Date;
+  isActive: boolean;
+  createdAt: Date;
 
   constructor(props: CategoryConstructorProps) {
-    this.category_id = props.category_id;
+    this.id = props.id;
     this.name = props.name;
     this.description = props.description ?? null;
-    this.is_active = props.is_active ?? true;
-    this.created_at = props.created_at ?? new Date();
+    this.isActive = props.is_active ?? true;
+    this.createdAt = props.created_at ?? new Date();
   }
 
   static create(props: CategoryConstructorProps): Category {
@@ -40,20 +40,20 @@ export class Category {
   }
 
   activate() {
-    this.is_active = true;
+    this.isActive = true;
   }
 
   deactivate() {
-    this.is_active = false;
+    this.isActive = false;
   }
 
   toJSON() {
     return {
-      category_id: this.category_id,
+      category_id: this.id,
       name: this.name,
       description: this.description,
-      is_active: this.is_active,
-      created_at: this.created_at,
+      is_active: this.isActive,
+      created_at: this.createdAt,
     };
   }
 }
